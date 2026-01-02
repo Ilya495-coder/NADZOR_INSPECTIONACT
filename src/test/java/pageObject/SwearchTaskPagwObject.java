@@ -20,9 +20,9 @@ public class SwearchTaskPagwObject {
     By buttonTask = By.xpath("//*[@id='sidebar_menu']/div[1]/cdp-menu-item/div/div/cdp-menu-item[1]");
 
     public void clickTask(){
-     new   WebDriverWait(driver , Duration.ofSeconds(3))
+     new   WebDriverWait(driver , Duration.ofSeconds(40))
                .until(ExpectedConditions.elementToBeClickable(buttonGosuslugi)).click();
-        new   WebDriverWait(driver , Duration.ofSeconds(3))
+        new   WebDriverWait(driver , Duration.ofSeconds(40))
                 .until(ExpectedConditions.elementToBeClickable(buttonTask)).click();
         //driver.findElement(buttonTask).click();
     }
