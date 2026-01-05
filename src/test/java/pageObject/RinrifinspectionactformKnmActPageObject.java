@@ -94,7 +94,7 @@ public class RinrifinspectionactformKnmActPageObject {
     public void clickButtonFile() {
         buttonFile.shouldBe(enabled, Duration.ofSeconds(10)).click();
     }
-
+    //eee
     public void clickCompleted() {
         buttonCompleted.shouldBe(enabled, Duration.ofSeconds(30)).click();
     }
