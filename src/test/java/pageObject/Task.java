@@ -1,23 +1,19 @@
 package pageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.codeborne.selenide.SelenideElement;
 
 import java.time.Duration;
 
-public class Task {
-    private WebDriver webDriver;
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Selenide.$;
+import static org.openqa.selenium.By.xpath;
 
-    public Task(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
-    By getTask = By.xpath("(.//span[contains(@class, 'mobile-task-title')])[1]");
+public class Task {
+
+    SelenideElement getTask = $(xpath("(.//span[contains(@class, 'mobile-task-title')])[1]"));
+
     //  выбираем самую первую задачу
     public void getElementTask() {
-        new WebDriverWait(webDriver, Duration.ofSeconds(40))
-                .until(ExpectedConditions.elementToBeClickable(getTask)).click();
+        getTask.shouldBe(enabled, Duration.ofSeconds(40)).click();
     }
 }

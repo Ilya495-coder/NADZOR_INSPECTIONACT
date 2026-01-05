@@ -1,102 +1,110 @@
 package pageObject;
 
-import net.bytebuddy.asm.Advice;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.codeborne.selenide.SelenideElement;
 
 import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Selenide.$;
+import static org.openqa.selenium.By.xpath;
 
 //ФЗ Сформировать Акт
 public class RinrifinspectionactformKnmActPageObject {
 
-    WebDriver  driver;
-    public RinrifinspectionactformKnmActPageObject(WebDriver driver) {
-        this.driver = driver;
-    }
-
-
     //текстовое поле Результат проведения КНМ
-    By textArearesoult = By.xpath(".//textarea[@name = 'checkResult']");
+    SelenideElement textArearesoult = $(xpath(".//textarea[@name = 'checkResult']"));
     //Блок "Рассмотренные документы" текстовое поле "Наименование"
-    By textAreaNameRevie = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[1]/textarea");
+    SelenideElement textAreaNameRevie = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[1]/textarea"));
     //Блок "Рассмотренные документы" текстовое поле "Номер"
-    By textAreaNumberRevie = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[2]/textarea");
+    SelenideElement textAreaNumberRevie = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[2]/textarea"));
     //Блок "Рассмотренные документы" текстовое поле "Дата"
-    By textAreaDataRevie = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[3]/rinrif-date-selector/div/input");
+    SelenideElement textAreaDataRevie = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[3]/rinrif-date-selector/div/input"));
     //Блок "Рассмотренные документы" текстовое поле "Источник"
-    By textAreaSourceRevie = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[4]/textarea");
+    SelenideElement textAreaSourceRevie = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[4]/textarea"));
 
     //кнопка плюс
-    By buttonPlus = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[5]/button[2]");
+    SelenideElement buttonPlus = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr/td[5]/button[2]"));
 
     //Блок "Рассмотренные документы" текстовое поле "Наименование"
-    By textAreaNameRevieDouble = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr[2]/td[1]/textarea");
+    SelenideElement textAreaNameRevieDouble = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr[2]/td[1]/textarea"));
     //Блок "Рассмотренные документы" текстовое поле "Номер"
-    By textAreaNumberRevieDouble = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr[2]/td[2]/textarea");
+    SelenideElement textAreaNumberRevieDouble = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr[2]/td[2]/textarea"));
     //Блок "Рассмотренные документы" текстовое поле "Дата"
-    By textAreaDataRevieDouble = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr[2]/td[3]/rinrif-date-selector/div/input");
+    SelenideElement textAreaDataRevieDouble = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr[2]/td[3]/rinrif-date-selector/div/input"));
     //Блок "Рассмотренные документы" текстовое поле "Источник"
-    By textAreaSourceRevieDouble = By.xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr[2]/td[4]/textarea");
+    SelenideElement textAreaSourceRevieDouble = $(xpath(".//h3[contains(text(),'Рассмотренные документы')]/following-sibling::table/tbody/tr[2]/td[4]/textarea"));
 
     //Блок "Приложенные документы" текстовое поле "Наименование"
-    By textAreaNameAttached = By.xpath(".//h3[contains(text(),'Приложенные документы')]/following-sibling::table/tbody/tr/td[1]/textarea");
+    SelenideElement textAreaNameAttached = $(xpath(".//h3[contains(text(),'Приложенные документы')]/following-sibling::table/tbody/tr/td[1]/textarea"));
     //Блок "Приложенные документы" текстовое поле "Реквизиты"
-    By textAreaRequisitesAttached = By.xpath(".//h3[contains(text(),'Приложенные документы')]/following-sibling::table/tbody/tr/td[2]/textarea");
+    SelenideElement textAreaRequisitesAttached = $(xpath(".//h3[contains(text(),'Приложенные документы')]/following-sibling::table/tbody/tr/td[2]/textarea"));
     //Блок "Приложенные документы" текстовое поле "Тип"
-    By textAreaTypeAttached = By.xpath(".//h3[contains(text(),'Приложенные документы')]/following-sibling::table/tbody/tr/td[3]/ng-select/div/div/div[3]/input");///div/div/div[2]
+    SelenideElement textAreaTypeAttached = $(xpath(".//h3[contains(text(),'Приложенные документы')]/following-sibling::table/tbody/tr/td[3]/ng-select/div/div/div[3]/input"));
+    /// div/div/div[2]
 
     //поле способ отправки
-    By fieldSend = By.xpath(".//label[contains(text(),'Способ отправки')]/following-sibling::div/ng-select/div/div/div[3]/input");
+    SelenideElement fieldSend = $(xpath(".//label[contains(text(),'Способ отправки')]/following-sibling::div/ng-select/div/div/div[3]/input"));
 
-    By fieldEmail = By.xpath(".//label[contains(text(),'e-mail контролируемого лица')]/following-sibling::div/textarea");
-    By buttonFile = By.xpath(".//button[contains(text(),'Сформировать Акт')]");
+    SelenideElement fieldEmail = $(xpath(".//label[contains(text(),'e-mail контролируемого лица')]/following-sibling::div/textarea"));
+    SelenideElement buttonFile = $(xpath(".//button[contains(text(),'Сформировать Акт')]"));
     //кнопка подписать и направит
-    By buttonCompleted = By.xpath(".//button[contains(text(),'Подписать и направить')]");
+    SelenideElement buttonCompleted = $(xpath(".//button[contains(text(),'Подписать и направить')]"));
+
+    //Дата
+    SelenideElement fieldTime = $(xpath(".//input[@placeholder = '__.__.____']"));
+    //Проведение проверки не представляется возможным по следующим причинам
+    SelenideElement inputNotPossible = $(xpath("(//input[@aria-autocomplete= 'list'])[1]"));
+    //Способ отправки
+    SelenideElement inputSend = $(xpath("(//input[@aria-autocomplete= 'list'])[2]"));
 
 
-    public void putchBlockRevie(){
-        new WebDriverWait(driver , Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(textArearesoult)).sendKeys("Тестовый результат проведления кнм");
-        driver.findElement(textAreaNameRevie).sendKeys("Тестовый текст в поле Наименование блок Рассмотренные документы");
-        driver.findElement(textAreaNumberRevie).sendKeys("Тестовый номер");
-        WebElement webElement = driver.findElement(textAreaDataRevie);
-        webElement.click();
-        driver.findElement(By.xpath(".//span[contains(text(),'15')]")).click();
-        driver.findElement(textAreaSourceRevie).sendKeys("Тетовый текс в поле Источник");
+    public void putchBlockRevie() {
+        textArearesoult.shouldBe(enabled, Duration.ofSeconds(15)).setValue("Тестовый результат проведления кнм");
+        textAreaNameRevie.shouldBe(enabled, Duration.ofSeconds(15)).setValue("Тестовый текст в поле Наименование блок Рассмотренные документы");
+        textAreaNumberRevie.setValue("Тестовый номер");
+        textAreaDataRevie.click();
+        $(xpath(".//span[contains(text(),'15')]")).click();
+        textAreaSourceRevie.setValue("Тетовый текс в поле Источник");
     }
-    public void putchBlockRevieDouble(){
-        driver.findElement(buttonPlus).click();
-        new WebDriverWait(driver , Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(textAreaNameRevieDouble)).sendKeys("Тестовое наименование дубль");
-        driver.findElement(textAreaNumberRevieDouble).sendKeys("Тестовый номер дубль");
-        WebElement webElement =  driver.findElement(textAreaDataRevieDouble);
-        webElement.click();
-        driver.findElement(By.xpath(".//span[contains(text(),'20')]")).click();
-        driver.findElement(textAreaSourceRevieDouble).sendKeys("Тестовый текст в поле источник дубль");
+
+    public void putchBlockRevieDouble() {
+        buttonPlus.click();
+        textAreaNameRevieDouble.shouldBe(enabled, Duration.ofSeconds(10)).setValue("Тестовое наименование дубль");
+        textAreaNumberRevieDouble.setValue("Тестовый номер дубль");
+        textAreaDataRevieDouble.click();
+        $(xpath(".//span[contains(text(),'20')]")).click();
+        textAreaSourceRevieDouble.setValue("Тестовый текст в поле источник дубль");
 
     }
-    public void putchBlockAttached(){
-        driver.findElement(textAreaNameAttached).sendKeys("тестовый текс в поле Наименование блок Приложенные документы");
-        driver.findElement(textAreaRequisitesAttached).sendKeys("Тестовые реквизиты в блоке Приложенные документы");
-       WebElement webElement =  driver.findElement(textAreaTypeAttached);
-        webElement.sendKeys("по");
-        webElement.sendKeys(Keys.ENTER);
+
+    public void putchBlockAttached() {
+        textAreaNameAttached.setValue("тестовый текс в поле Наименование блок Приложенные документы");
+        textAreaRequisitesAttached.setValue("Тестовые реквизиты в блоке Приложенные документы");
+        textAreaTypeAttached.setValue("по").pressEnter();
     }
-    public void fieldTextSend(){
-       WebElement webElement =  driver.findElement(fieldSend);
-        webElement.sendKeys("по");
-        webElement.sendKeys(Keys.ENTER);
+
+    public void fieldTextSend() {
+        fieldSend.setValue("по").pressEnter();
     }
-    public void fieldTextEmail(){
-        driver.findElement(fieldEmail).sendKeys("IGoncharov@reinform.ru");
+
+    public void fieldTextEmail() {
+        fieldEmail.setValue("IGoncharov@reinform.ru");
     }
-    public void clickButtonFile(){
-        new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(ExpectedConditions.elementToBeClickable(buttonFile)).click();
+
+    public void clickButtonFile() {
+        buttonFile.shouldBe(enabled, Duration.ofSeconds(10)).click();
     }
-    public void clickCompleted(){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(buttonCompleted)).click();
+    //eee
+    public void clickCompleted() {
+        buttonCompleted.shouldBe(enabled, Duration.ofSeconds(30)).click();
+    }
+    public void printTask(){
+        fieldTime.shouldBe(enabled , Duration.ofSeconds(5)).click();
+        $(xpath(".//td[@class='ng-star-inserted']/span[contains(text(),'20')]")).click();
+        inputNotPossible.setValue("иное").pressEnter();
+        inputSend.setValue("заказным").pressEnter();
+        $(".form-control.ng-untouched.ng-pristine.ng-valid").setValue("Тестовый адрес");
+        buttonFile.click();
+        buttonCompleted.shouldBe(enabled , Duration.ofSeconds(10)).click();
     }
 }

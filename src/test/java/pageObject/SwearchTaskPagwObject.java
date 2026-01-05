@@ -1,30 +1,23 @@
 package pageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.codeborne.selenide.SelenideElement;
 
 import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Selenide.$;
+import static org.openqa.selenium.By.xpath;
 
 
 public class SwearchTaskPagwObject {
 
-    WebDriver driver;
+    SelenideElement buttonGosuslugi = $(xpath("//div[@id='sidebar_menu']/div[1]/cdp-menu-item/a/div/div[1]"));
+    SelenideElement buttonTask = $(xpath("//div[@id='sidebar_menu']/div[1]/cdp-menu-item/div/div/cdp-menu-item[1]"));
 
-    public SwearchTaskPagwObject(WebDriver driver) {
-        this.driver = driver;
-    }
+    public void clickTask() {
+        buttonGosuslugi.shouldBe(enabled, Duration.ofSeconds(40)).click();
+        buttonTask.shouldBe(enabled, Duration.ofSeconds(40)).click();
 
-    By buttonGosuslugi = By.xpath("//*[@id='sidebar_menu']/div[1]/cdp-menu-item/a/div/div[1]");
-    By buttonTask = By.xpath("//*[@id='sidebar_menu']/div[1]/cdp-menu-item/div/div/cdp-menu-item[1]");
-
-    public void clickTask(){
-     new   WebDriverWait(driver , Duration.ofSeconds(40))
-               .until(ExpectedConditions.elementToBeClickable(buttonGosuslugi)).click();
-        new   WebDriverWait(driver , Duration.ofSeconds(40))
-                .until(ExpectedConditions.elementToBeClickable(buttonTask)).click();
-        //driver.findElement(buttonTask).click();
     }
 
 }
