@@ -1,33 +1,28 @@
 package pageObject;
 
+import com.codeborne.selenide.SelenideElement;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Selenide.$;
 
 
 public class AutorizationPageObject {
-    WebDriver driver;
-    By buttonSignInLoginAndPassword = By.linkText("Войти по логину и паролю");
-    By fieldLogin = By.id("username");
-    By fieldPassword = By.id("password");
-    By signIn = By.name("login");
 
+    SelenideElement buttonSignInLoginAndPassword = $(".login-page__login");
+    SelenideElement fieldLogin = $("#username");
+    SelenideElement fieldPassword = $("#password");
+    SelenideElement signIn = $("[name='login']");
 
-    public AutorizationPageObject(WebDriver driver) {
-        this.driver = driver;
+    public void clickButtonSignIb() {
+        buttonSignInLoginAndPassword.shouldBe(enabled, Duration.ofSeconds(20)).click();
     }
 
-    public void clickButtonSignIb(){
-        driver.findElement(buttonSignInLoginAndPassword).click();
-    }
-    public void setFieldLoginPassword(String login, String password){
-        driver.findElement(fieldLogin).sendKeys(login);
-        driver.findElement(fieldPassword).sendKeys(password);
-        driver.findElement(signIn).click();
+    public void setFieldLoginPassword(String login, String password) {
+        fieldLogin.sendKeys(login);
+        fieldPassword.sendKeys(password);
+        signIn.click();
     }
 
 }

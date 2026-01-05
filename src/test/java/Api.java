@@ -1,12 +1,8 @@
-import io.qameta.allure.internal.shadowed.jackson.databind.JsonSerializable;
-import io.restassured.RestAssured;
-import org.junit.jupiter.api.BeforeEach;
-
 
 import static io.restassured.RestAssured.given;
 
 public class Api {
-    //RestAssured.baseURI = "https://smart-dev.reinform-int.ru/app/rinrif/nadzor"
+
     public String getToken() {
         String token = given()
                 .header("Content-Type", "application/x-www-form-urlencoded")
@@ -20,8 +16,9 @@ public class Api {
                 .then().log().ifValidationFails().extract().path("access_token");
         return token;
     }
-    public void postAct(){
-        String token =  getToken();
+
+    public void postAct() {
+        String token = getToken();
         System.out.println(token);
         given()
                 .auth().oauth2(token)
